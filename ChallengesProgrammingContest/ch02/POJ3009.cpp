@@ -175,7 +175,12 @@ coordinate Solution::try_move_down(vector<vector<int> > &mat, coordinate c)
 
 int Solution::solve(vector<vector<int> > &mat, int h, int w, coordinate current, coordinate end, int current_move)
 {
-    // 基线: 再走一步就是目的地
+    // 基线 1：超过 10 步，返回 -1
+    if (current_move > 10)
+    {
+        return -1;
+    }
+    // 基线 2: 再走一步就是目的地
     if (is_reachable(mat, current, end))
     {
         return current_move + 1;
